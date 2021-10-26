@@ -78,7 +78,7 @@ output "Security_groups" {
 output "host_k8s" {
   value = [
     "IP ${aws_instance.maquina_master.public_ip}",
-    "Img ${aws_instance.maquina_master.id}",
+    "${aws_instance.maquina_master.id}",
     "ssh  ubuntu@${aws_instance.maquina_master.public_dns}"
   ]
 }
