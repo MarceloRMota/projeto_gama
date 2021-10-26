@@ -75,9 +75,9 @@ output "Security_groups" {
   ]
 }
 
-output "Master" {
+output "host_k8s" {
   value = [
-    "Master ${aws_instance.maquina_master.public_ip}",
+    "IP ${aws_instance.maquina_master.public_ip}",
     "Img ${aws_instance.maquina_master.id}",
     "ssh  ubuntu@${aws_instance.maquina_master.public_dns}"
   ]
