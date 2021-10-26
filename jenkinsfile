@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone scripts deploy') {
+            steps {
+                git url:'https://github.com/MarceloRMota/projeto_gama.git', branch: 'main'
+            }
+        }
+        stage('Deploy EC2') {
+            steps {
+                sh "~/workspace/criando_DB/deploy.sh"
+            }
+        }
+        stage('Configurando as Bases DEV-STAGE-DB') {
+            steps {
+                sh "~/workspace/criando_DB/configurar.sh"
+            }
+        }
+        stage('Teste K8S') {
+            steps {
+                sh "~/workspace/criando_DB/teste.sh"
+            }
+        }
+
+      }
+   }
+    

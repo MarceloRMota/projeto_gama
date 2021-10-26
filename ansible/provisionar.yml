@@ -1,0 +1,72 @@
+- hosts: all
+  become: yes
+  
+  tasks:
+    - name: "Roda: sudo apt-get update"
+      become: true
+      apt:
+        upgrade: yes
+        update_cache: yes
+        cache_valid_time: 86400 #Um dia
+  
+    - name: "Roda: Refresh packages"
+      become: true
+      apt:
+        name: '*'
+        state: latest
+ 
+    - name: "Instala pacotes"
+      apt:
+        name: "{{ item }}"
+        state: latest
+      become: yes # roda com sudo
+      with_items:
+        - mysql-server
+        - python3-pip
+        - libmysqlclient-dev
+        - python3-dev
+        - python3-mysqldb
+        
+    - name: "Create mysql user"
+      mysql_user: 
+        login_password='root'
+        name='root'
+        password='password_mysql'
+        priv='*.*:ALL,GRANT'
+        host='%'
+
+
+    - name: Criando bases 'dev' 'stage' 'prd'
+      community.mysql.mysql_db:
+        name:
+          - dev
+          - stage
+          - prd
+        state: present
+
+
+    - name: "Arquivo mysqld.cnf com autorização"
+      copy: 
+        src: "mysqld.cnf"
+        dest: "/etc/mysql/mysql.conf.d/"
+
+    - name: Compiando dump da base
+      copy:
+        src: "1.2-dump-mysql.sql"
+        dest: "/tmp/1.2-dump-mysql.sql"
+      become: yes
+
+    - name: "Restaura dump"
+      shell: "cat /tmp/1.2-dump-mysql.sql |  mysql -uroot -ppassword_mysql dev"
+
+    - name: "Restaura dump"
+      shell: "cat /tmp/1.2-dump-mysql.sql |  mysql -uroot -ppassword_mysql stage"
+
+    - name: "Restaura dump"
+      shell: "cat /tmp/1.2-dump-mysql.sql |  mysql -uroot -ppassword_mysql prd"
+
+    - name: "restart mysql"
+      service:
+        name: mysql
+        state: restarted
+      become: yes
