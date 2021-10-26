@@ -2,9 +2,6 @@ provider "aws" {
   region = "sa-east-1"
 }
 
-data "terraform_remote_state" "vpc" {
-  backend = "local"
-}
 
 resource "aws_instance" "maquina_master" {
   ami           = "ami-054a31f1b3bf90920"
