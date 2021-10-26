@@ -6,7 +6,7 @@ provider "aws" {
 resource "aws_instance" "maquina_master" {
   ami           = "ami-054a31f1b3bf90920"
   instance_type = "t2.medium"
-  key_name      = "dev-lucgabm-tf"
+  key_name      = "jenkins_key"
   associate_public_ip_address = true
   subnet_id = "subnet-0ce8b292e31b2d588"
   vpc_security_group_ids = ["${aws_security_group.acessos_master.id}"]
