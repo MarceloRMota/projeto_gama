@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone scripts deploy') {
+            steps {
+                git url:'https://github.com/MarceloRMota/projeto_gama.git', branch: 'main'
+            }
+        }
+        stage('Deploy EC2') {
+            steps {
+                sh "~/workspace/PipeMota/deploy_ec2.sh"
+            }
+        }
+        stage('Deploy Nginx') {
+            steps {
+                sh "~/workspace/PipeMota/deploy_nginx.sh"
+            }
+        }
+        stage('Test Nginx') {
+            steps {
+                sh "~/workspace/PipeMota/teste.sh"
+            }
+        }
+        stage('Create Image') {
+            steps {
+                sh "~/workspace/PipeMota/image.sh"
+            }
+        }
+        stage('Destroy tudo') {
+            steps {
+                sh "~/workspace/PipeMota/destroy.sh"
+            }
+        }
+      }
+    }
