@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+
+
+    stages {
+        stage('Build') {
+            steps {
+                // Get some code from a GitHub repository
+                git url: 'https://github.com/lucasgmarcondes/projeto_final_gama.git', branch: 'stage'
+                sh '~/worspace/deploy_desenv/build/build.sh'
+            }
+        }
+        stage('TDD') {
+            steps {
+                sh '~/worspace/deploy_desenv/build/test_build.sh'
+            }
+        }
+
+        stage('Docker image/push') {
+            steps {
+                sh "~/worspace/deploy_desenv/build/docker_deploy.sh"
+            }
+        }
+        stage('K8s-DEV') {
+            steps {
+                sh '~/worspace/deploy_desenv/dev/deploy_dev.sh'
+            }
+        }
+        stage('K8s-STAGE') {
+            steps {
+                sh '~/worspace/deploy_desenv/stage/deploy_stage.sh'
+            }
+        }
+        stage('K8s-PROD') {
+            steps {
+                sh '~/worspace/deploy_desenv/prd/deploy_prd.sh'
+            }
+        }
+    }
+}
