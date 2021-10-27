@@ -1,0 +1,9 @@
+com/web/tornese/SpringWeb/Servico/Autenticacao/LoginInterceptorAppConfig.class
+com/web/tornese/SpringWeb/repositorio/AdministradoresRepo.class
+com/web/tornese/SpringWeb/Servico/Autenticacao/LoginInterceptor.class
+com/web/tornese/SpringWeb/SpringWebApplication.class
+com/web/tornese/SpringWeb/controllers/HomeController.class
+com/web/tornese/SpringWeb/Servico/CookieService.class
+com/web/tornese/SpringWeb/controllers/LoginController.class
+com/web/tornese/SpringWeb/models/Administrador.class
+com/web/tornese/SpringWeb/controllers/AdministradoresController.class

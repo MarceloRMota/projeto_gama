@@ -1,0 +1,9 @@
+/root/projetos/Projeto-Final/build/src/main/java/com/web/tornese/SpringWeb/controllers/HomeController.java
+/root/projetos/Projeto-Final/build/src/main/java/com/web/tornese/SpringWeb/Servico/CookieService.java
+/root/projetos/Projeto-Final/build/src/main/java/com/web/tornese/SpringWeb/repositorio/AdministradoresRepo.java
+/root/projetos/Projeto-Final/build/src/main/java/com/web/tornese/SpringWeb/models/Administrador.java
+/root/projetos/Projeto-Final/build/src/main/java/com/web/tornese/SpringWeb/Servico/Autenticacao/LoginInterceptor.java
+/root/projetos/Projeto-Final/build/src/main/java/com/web/tornese/SpringWeb/controllers/LoginController.java
+/root/projetos/Projeto-Final/build/src/main/java/com/web/tornese/SpringWeb/Servico/Autenticacao/LoginInterceptorAppConfig.java
+/root/projetos/Projeto-Final/build/src/main/java/com/web/tornese/SpringWeb/SpringWebApplication.java
+/root/projetos/Projeto-Final/build/src/main/java/com/web/tornese/SpringWeb/controllers/AdministradoresController.java
