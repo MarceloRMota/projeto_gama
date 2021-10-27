@@ -6,7 +6,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                git url: 'https://github.com/lucasgmarcondes/projeto_final_gama.git', branch: 'stage'
+                git url: 'https://github.com/MarceloRMota/projeto_gama.git', branch: 'spring'
                 sh '~/worspace/deploy_desenv/build/build.sh'
             }
         }
@@ -18,22 +18,22 @@ pipeline {
 
         stage('Docker image/push') {
             steps {
-                sh "~/worspace/deploy_desenv/build/docker_deploy.sh"
+                sh "~/workspace/deploy_desenv/build/docker_deploy.sh"
             }
         }
         stage('K8s-DEV') {
             steps {
-                sh '~/worspace/deploy_desenv/dev/deploy_dev.sh'
+                sh '~/workspace/deploy_desenv/dev/deploy_dev.sh'
             }
         }
         stage('K8s-STAGE') {
             steps {
-                sh '~/worspace/deploy_desenv/stage/deploy_stage.sh'
+                sh '~/workspace/deploy_desenv/stage/deploy_stage.sh'
             }
         }
         stage('K8s-PROD') {
             steps {
-                sh '~/worspace/deploy_desenv/prd/deploy_prd.sh'
+                sh '~/workspace/deploy_desenv/prd/deploy_prd.sh'
             }
         }
     }
