@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "k8s_proxy" {
-  ami           = "ami-0dd1dd95d8bfa7ca2"
+  ami           = "ami-0498cb2b9c855bb43"
   instance_type = "t2.micro"
   subnet_id     = "subnet-039f8bb8424a2adf0"
   key_name      = "jenkins_key"
@@ -20,7 +20,7 @@ resource "aws_instance" "k8s_proxy" {
 }
 
 resource "aws_instance" "k8s_masters" {
-  ami           = "ami-0dd1dd95d8bfa7ca2"
+  ami           = "ami-0498cb2b9c855bb43"
   instance_type = "t2.large"
   key_name      = "jenkins_key"
   subnet_id     = "subnet-039f8bb8424a2adf0"
@@ -43,7 +43,7 @@ resource "aws_instance" "k8s_masters" {
 }
 
 resource "aws_instance" "k8s_workers" {
-  ami           = "ami-0dd1dd95d8bfa7ca2"
+  ami           = "ami-0498cb2b9c855bb43"
   instance_type = "t2.medium"
   subnet_id     = "subnet-0ce8b292e31b2d588"
   key_name      = "jenkins_key"
@@ -62,7 +62,7 @@ resource "aws_instance" "k8s_workers" {
 }
 
 resource "aws_instance" "k8s_private_workers" {
-  ami           = "ami-0dd1dd95d8bfa7ca2"
+  ami           = "ami-0498cb2b9c855bb43"
   instance_type = "t2.medium"
   subnet_id     = "subnet-0ba351a68949c6953"
   key_name      = "jenkins_key"
