@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: container-pod-javadb-prd
-          image: celo/projeto_final:0.0.1
+          image: celo/projeto_final:0.0.2
           env:
             - name: USER
               valueFrom:

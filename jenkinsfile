@@ -7,14 +7,12 @@ pipeline {
             steps {
                 // Get some code from a GitHub repository
                 git url: 'https://github.com/MarceloRMota/projeto_gama.git', branch: 'spring'
-                sh 'cd ~/workspace/deploy_desenv/build/'
-                sh '~/workspace/deploy_desenv/build/build.sh'
+                sh '~/workspace/deploy_desenv/build.sh'
             }
         }
         stage('TDD') {
             steps {
-                sh 'cd ~/worspace/deploy_desenv/build/'
-                sh '~/workspace/deploy_desenv/build/test_build.sh'
+                sh '~/workspace/deploy_desenv/test_build.sh'
             }
         }
 
