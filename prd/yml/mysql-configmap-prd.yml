@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-configmap-prd
+data:
+  USER: root
+  DATABASE_URL: mysql://10.5.1.75:3306/prd?useTimezone=true&serverTimezone=UTC
+

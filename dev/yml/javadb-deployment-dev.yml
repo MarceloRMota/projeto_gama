@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-deployment-dev
+spec:
+  template:
+    metadata:
+      name: pod-javadb-dev
+      labels:
+        app: pod-javadb-dev
+    spec:
+      containers:
+        - name: container-pod-javadb-dev
+          image: celo/projeto_final:0.0.1
+          env:
+            - name: USER
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-configmap-dev
+                  key: USER
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: PASSWORD
+            - name: DATABASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-configmap-dev
+                  key: DATABASE_URL
+          ports:
+            - containerPort: 8080
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pod-javadb-dev

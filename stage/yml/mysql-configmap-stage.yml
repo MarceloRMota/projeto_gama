@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-configmap-stage
+data:
+  USER: root
+  DATABASE_URL: mysql://10.5.1.75:3306/stage?useTimezone=true&serverTimezone=UTC
+

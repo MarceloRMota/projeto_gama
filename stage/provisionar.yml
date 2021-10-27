@@ -1,0 +1,17 @@
+- hosts: all
+  become: yes
+
+  tasks:
+    - name: copiando os yml para criacao de maquinas
+      copy:
+        src: yml
+        dest: /home/ubuntu/
+
+    - name: "aplicando o configmap"
+      shell: "kubectl apply -f /home/ubuntu/yml/mysql-configmap-stage.yml"
+
+    - name: "aplicando o nodeport"
+      shell: "kubectl apply -f /home/ubuntu/yml/nodeport-javadb-stage.yml"
+
+    - name: "aplicando o configmap"
+      shell: "kubectl apply -f /home/ubuntu/yml/javadb-deployment-stage.yml"
